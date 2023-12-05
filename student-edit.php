@@ -42,12 +42,16 @@ require 'dbcon.php';
                             {
                                 $student = mysqli_fetch_array($query_run);
                                 ?>
-                                <form action="code.php" method="POST">
+                                <form action="code.php" method="POST" enctype="multipart/form-data">
                                     <input type="hidden" name="student_id" value="<?= $student['id']; ?>">
 
                                     <div class="mb-3">
                                         <label>Student Name</label>
                                         <input type="text" name="name" value="<?=$student['name'];?>" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>Student DOB</label>
+                                        <input type="text" name="dob" value="<?=$student['DOB'];?>" class="form-control">
                                     </div>
                                     <div class="mb-3">
                                         <label>Student Email</label>
@@ -62,7 +66,12 @@ require 'dbcon.php';
                                         <input type="text" name="course" value="<?=$student['course'];?>" class="form-control">
                                     </div>
                                     <div class="mb-3">
-                                        <button type="submit" name="update_student" class="btn btn-primary">
+                                     <label for="image">Choose Image:</label>
+                                     <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+                                </div>
+                                    <input type="submit" value="Upload Image" class="btn btn-primary">
+                                    <div class="mb-3 mt-3">
+                                        <button type="submit" name="update_student" class="btn btn-success">
                                             Update Student
                                         </button>
                                     </div>

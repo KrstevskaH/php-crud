@@ -8,6 +8,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +35,9 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
+                                    <th>Image</th>
                                     <th>Student Name</th>
+                                    <th>Student DOB</th>
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Course</th>
@@ -53,7 +56,9 @@
                                             ?>
                                             <tr>
                                                 <td><?= $student['id']; ?></td>
+                                                <td><img src="images/<?= $student['image']; ?>" alt="images"></td>
                                                 <td><?= $student['name']; ?></td>
+                                                <td><?= $student['DOB']; ?></td>
                                                 <td><?= $student['email']; ?></td>
                                                 <td><?= $student['phone']; ?></td>
                                                 <td><?= $student['course']; ?></td>

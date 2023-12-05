@@ -29,11 +29,15 @@ session_start();
                         </h4>
                     </div>
                     <div class="card-body">
-                        <form action="code.php" method="POST">
+                        <form action="code.php" method="POST" enctype="multipart/form-data">
 
                             <div class="mb-3">
                                 <label>Student Name</label>
                                 <input type="text" name="name" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label>Date of birth</label>
+                                <input type="date" name="dob" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label>Student Email</label>
@@ -48,9 +52,13 @@ session_start();
                                 <input type="text" name="course" class="form-control">
                             </div>
                             <div class="mb-3">
-                                <button type="submit" name="save_student" class="btn btn-primary">Save Student</button>
-                            </div>
-
+                             <label for="image">Choose Image:</label>
+                             <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+                        </div>
+                         <input type="submit" value="Upload Image" class="btn btn-primary">
+                            <div class="mb-3 mt-3">
+                                <button type="submit" name="save_student" class="btn btn-success">Save Student</button>
+                            </div>                        
                         </form>
                     </div>
                 </div>

@@ -7,6 +7,7 @@ require 'dbcon.php';
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -38,12 +39,31 @@ require 'dbcon.php';
                             {
                                 $student = mysqli_fetch_array($query_run);
                                 ?>
+                                     <div class="mb-3">
+                                     <label>Student Image</label>
+                                    <img src="images/<?= $student['image']; ?>" alt="Student Image" class="img-fluid">
+                                 </div>
+                                    
+
+
+                                     <div class="mb-3">
+                                     <label>Student Image</label>
+                                     <p class="form-control">
+                                     <?= basename($student['image']); ?>
+                                </p>
+                            </div>
                                 
                                     <div class="mb-3">
                                         <label>Student Name</label>
                                         <p class="form-control">
                                             <?=$student['name'];?>
                                         </p>
+                                    </div>
+                                    <div class="mb-3">
+                                       <label>Student DOB</label>
+                                        <p class="form-control">
+                                         <?=$student['DOB'];?> 
+                                        </p> 
                                     </div>
                                     <div class="mb-3">
                                         <label>Student Email</label>
