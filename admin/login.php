@@ -41,6 +41,15 @@
   </form>
 <?php
     }
+
+    // session_start();
+    // if($_SESSION) {
+    //     $_SESSION['id'] = $id;
+    //     $_SESSION['username'] = $username;
+    // }
+
+
+
 ?>
 </body>
 </html>
