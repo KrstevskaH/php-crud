@@ -179,3 +179,8 @@ h3 {
    .navbar-header.col {
 	color: white;
    }
+
+   img {
+    height: 100px;
+    width: 100px;object-fit: cover;
+}

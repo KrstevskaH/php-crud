@@ -1,6 +1,6 @@
 <?php
 //include auth_session.php file on all user panel pages
-include("auth_session.php");
+ include("auth_session.php");
 
 if (isset($_SESSION['id'])) {
     $loggedInUserId = $_SESSION['id'];
@@ -35,8 +35,8 @@ if (isset($_SESSION['id'])) {
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start ">
 		<div class="navbar-nav">
-			<a href="#" class="nav-item nav-link active">Home</a>
-			<a href="#" class="nav-item nav-link">About</a>
+			<a href="dashboard.php" class="nav-item nav-link active">Home</a>
+			<a href="students.php" class="nav-item nav-link">Students</a>
 			<div class="nav-item dropdown">
 				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Services</a>
 				<div class="dropdown-menu  font-weight-bold">
@@ -59,26 +59,22 @@ if (isset($_SESSION['id'])) {
 			<a href="#" class="nav-item nav-link notifications"><i class="fa fa-bell-o"></i><span class="badge">1</span></a>
 			<a href="#" class="nav-item nav-link messages"><i class="fa fa-envelope-o"></i><span class="badge">10</span></a></a>
 			<div class="nav-item dropdown">
-				<a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><img src="images" class="avatar" alt="Avatar"> <?php echo $_SESSION['username']; ?> <b class="caret"></b></a>
+				<a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><img src="../images/signal-2023-09-09-162014_002.jpeg" class="avatar" alt="Avatar"> <?php echo $_SESSION['username']; ?> <b class="caret"></b></a>
 				<div class="dropdown-menu">
-					<a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></a>
+					<a href="profile.php" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></a>
 					<a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a></a>
 					<a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a></a>
 					<div class="dropdown-divider"></div>
-					<a href="#" class="dropdown-item"><i class="material-icons">&#xE8AC;</i> Logout</a></a>
+					<a href="login.php" class="dropdown-item"><i class="material-icons">&#xE8AC;</i> Logout</a></a>
 				</div>
 			</div>
 		</div>
 	</div>
 </nav>
 
-    <div class="form">
-        <p>Hey, <?php echo $_SESSION['username']; ?>!</p>
-        <p>You are now user dashboard page.</p>
-        <p><a href="logout.php">Logout</a></p>
-    </div>
+   
     
-    <div class="cards-container container-fluid">
+    <div class="cards-container container-fluid mt-5">
         <div class="card text-white bg-success mb-3 float-left mr-3" style="max-width: 18rem; margin-left: 10%">
             <div class="card-header"></div>
             <div class="card-body">

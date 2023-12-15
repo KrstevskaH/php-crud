@@ -1,20 +1,19 @@
 <?php
-session_start();
 require 'dbcon.php';
-include("auth_session.php");
+ include("auth_session.php");
 ?>
-
 <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <title>Student Edit</title>
+    <title>Student View</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merienda+One">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -69,17 +68,15 @@ include("auth_session.php");
 		</div>
 	</div>
 </nav>
-  
-    <div class="container mt-5">
 
-        <?php include('message.php'); ?>
+    <div class="container mt-5">
 
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Student Edit 
-                            <a href="index.php" class="btn btn-danger float-end">BACK</a>
+                        <h4>Student View Details 
+                            <a href="students.php" class="btn btn-danger float-end">BACK</a>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -95,41 +92,51 @@ include("auth_session.php");
                             {
                                 $student = mysqli_fetch_array($query_run);
                                 ?>
-                                <form action="code.php" method="POST" enctype="multipart/form-data">
-                                    <input type="hidden" name="student_id" value="<?= $student['id']; ?>">
+                                     <div class="mb-3">
+                                     <label>Student Image</label>
+                                    <img src="images/<?= $student['image']; ?>" alt="Student Image" class="img-fluid">
+                                 </div>
+                                    
 
+
+                                     <div class="mb-3">
+                                     <label>Student Image</label>
+                                     <p class="form-control">
+                                     <?= basename($student['image']); ?>
+                                </p>
+                            </div>
+                                
                                     <div class="mb-3">
                                         <label>Student Name</label>
-                                        <input type="text" name="name" value="<?=$student['name'];?>" class="form-control">
+                                        <p class="form-control">
+                                            <?=$student['name'];?>
+                                        </p>
                                     </div>
                                     <div class="mb-3">
-                                        <label>Student DOB</label>
-                                        <input type="text" name="dob" value="<?=$student['DOB'];?>" class="form-control">
+                                       <label>Student DOB</label>
+                                        <p class="form-control">
+                                         <?=$student['DOB'];?> 
+                                        </p> 
                                     </div>
                                     <div class="mb-3">
                                         <label>Student Email</label>
-                                        <input type="email" name="email" value="<?=$student['email'];?>" class="form-control">
+                                        <p class="form-control">
+                                            <?=$student['email'];?>
+                                        </p>
                                     </div>
                                     <div class="mb-3">
                                         <label>Student Phone</label>
-                                        <input type="text" name="phone" value="<?=$student['phone'];?>" class="form-control">
+                                        <p class="form-control">
+                                            <?=$student['phone'];?>
+                                        </p>
                                     </div>
                                     <div class="mb-3">
                                         <label>Student Course</label>
-                                        <input type="text" name="course" value="<?=$student['course'];?>" class="form-control">
-                                    </div>
-                                    <div class="mb-3">
-                                     <label for="image">Choose Image:</label>
-                                     <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
-                                </div>
-                                    <input type="submit" value="Upload Image" class="btn btn-primary">
-                                    <div class="mb-3 mt-3">
-                                        <button type="submit" name="update_student" class="btn btn-success">
-                                            Update Student
-                                        </button>
+                                        <p class="form-control">
+                                            <?=$student['course'];?>
+                                        </p>
                                     </div>
 
-                                </form>
                                 <?php
                             }
                             else
@@ -143,7 +150,7 @@ include("auth_session.php");
             </div>
         </div>
     </div>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
