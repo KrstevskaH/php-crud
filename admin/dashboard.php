@@ -78,7 +78,13 @@ if (isset($_SESSION['id'])) {
         <div class="card text-white bg-success mb-3 float-left mr-3" style="max-width: 18rem; margin-left: 10%">
             <div class="card-header"></div>
             <div class="card-body">
-                <h5 class="card-title">Student 0</h5>
+            <?php  
+                $con = mysqli_connect("localhost","root","","crud");
+                $query = "SELECT COUNT(id) FROM users";  
+                $query_run = mysqli_query($con, $query);
+                $result = mysqli_fetch_array($query_run);                                 
+            ?>
+                <h5 class="card-title"><?= $result[0] ?></h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
         </div>
