@@ -1,5 +1,6 @@
 <?php
 include("auth_session.php");
+include("header.php");
 require 'dbcon.php';
 
 
@@ -19,9 +20,7 @@ if (isset($_SESSION['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    
     <title>Student CRUD</title>
 </head>
 

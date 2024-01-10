@@ -78,6 +78,53 @@ if(isset($_POST['save_student']))
     }
 }
 
+if(isset($_POST['delete_newsCard']))
+{
+    $news_id = mysqli_real_escape_string($con, $_POST['delete_newsCard']);
+
+    $query = "DELETE FROM news WHERE id='$news_id' ";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = "News Card Deleted Successfully";
+        header("Location: news.php");
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "News Card Not Deleted";
+        header("Location: news.php");
+        exit(0);
+    }
+}
+
+if(isset($_POST['update_newsCard']))
+{
+    $news_id = mysqli_real_escape_string($con, $_POST['news_id']);
+    $image = htmlspecialchars(basename($_FILES["image"]["name"]));
+    $title = mysqli_real_escape_string($con, $_POST['title']);
+    $description = mysqli_real_escape_string($con, $_POST['description']);
+    
+
+    $query = "UPDATE news SET image='images/$image', title='$title', description='$description' WHERE id='$news_id' ";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = "News Updated Successfully";
+        header("Location: news.php");
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "News Not Updated";
+        header("Location: news.php");
+        exit(0);
+    }
+
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
