@@ -21,6 +21,17 @@ if (isset($_SESSION['id'])) {
     <title>Dashboard - Client area</title>
     <link rel="stylesheet" href="css/style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        
+        .card-link {
+            color: #222831; 
+            text-decoration: none; 
+        }
+
+        .card-link:hover {
+            color: #f2f2f2; 
+        }
+    </style>
 
    
 </head>
@@ -29,41 +40,128 @@ if (isset($_SESSION['id'])) {
 
    
     
-    <div class="cards-container container-fluid mt-5">
-        <div class="card text-white bg-success mb-3 float-left mr-3" style="max-width: 18rem; margin-left: 10%">
-            <div class="card-header"></div>
-            <div class="card-body">
-            <?php  
+   
+        <div class="container">
+  <?php include('message.php'); ?>
+    <div class="row gy-3 mt-5">
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card">
+          <div class="card-body bg-info">
+          <h5 class="card-title">Students
+          <?php  
                 $con = mysqli_connect("localhost","root","","crud");
-                $query = "SELECT COUNT(id) FROM users";  
+                $query = "SELECT COUNT(id) FROM students";  
                 $query_run = mysqli_query($con, $query);
                 $result = mysqli_fetch_array($query_run);                                 
             ?>
                 <h5 class="card-title"><?= $result[0] ?></h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
+                <i class="fa fa-users fa-3x text-light"></i>
         </div>
-        <div class="card text-white bg-success mb-3 float-left mr-3" style="max-width: 18rem;">
-            <div class="card-header"></div>
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text">Rumble is an online video platform, web hosting and cloud services business headquartered in Toronto, Ontario.</p>
-            </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card">
+          <div class="card-body bg-warning">
+          <?php  
+            $con = mysqli_connect("localhost","root","","crud");
+            $query = "SELECT COUNT(id) FROM news";  
+            $query_run = mysqli_query($con, $query);
+
+            
+            if ($query_run) {
+                $result = mysqli_fetch_array($query_run);
+
+                
+                if ($result !== null && count($result) > 0) {
+                    ?>
+                    <a href="../home.php" class="card-link">
+                        <h5 class="card-title">Total News <?= $result[0] ?></h5>
+                    </a>
+                    <?php
+                } else {
+                    echo "No active news found."; 
+                }
+            } else {
+                
+                echo "Error: " . mysqli_error($con);
+            }
+        ?>
+
+
+          
+          <i class="fa fa-newspaper-o fa-3x text-light"></i>
         </div>
-        <div class="card text-white bg-success mb-3 float-left mr-3" style="max-width: 18rem;">
-            <div class="card-header"></div>
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text">It was founded in 2013 by Chris Pavlovski, a Canadian technology entrepreneur.</p>
-            </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-3">
+    
+        <div class="card">
+                  
+          <div class="card-body bg-danger">
+          <a href="../home.php" class="card-link"> </h5></a>
+          <?php  
+            $con = mysqli_connect("localhost","root","","crud");
+            $query = "SELECT COUNT(id) FROM news WHERE status = '1'";  
+            $query_run = mysqli_query($con, $query);
+
+            
+            if ($query_run) {
+                $result = mysqli_fetch_array($query_run);
+
+                
+                if ($result !== null && count($result) > 0) {
+                    ?>
+                    <a href="../home.php" class="card-link">
+                        <h5 class="card-title">Active News <?= $result[0] ?></h5>
+                    </a>
+                    <?php
+                } else {
+                    echo "No active news found."; 
+                }
+            } else {
+                
+                echo "Error: " . mysqli_error($con);
+            }
+        ?>
+            
+          <i class="fa fa-newspaper-o fa-3x text-light"></i>
         </div>
-        <div class="card text-white bg-success mb-3 float-left" style="max-width: 18rem;">
-            <div class="card-header"></div>
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text"> Rumble's cloud services business hosts Truth Social.Rumble has been described as "alt-tech".</p>
-            </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card">
+          <div class="card-body bg-success">
+          <?php  
+            $con = mysqli_connect("localhost","root","","crud");
+            $query = "SELECT COUNT(id) FROM news WHERE status = '0'";  
+            $query_run = mysqli_query($con, $query);
+
+            
+            if ($query_run) {
+                $result = mysqli_fetch_array($query_run);
+
+                
+                if ($result !== null && count($result) > 0) {
+                    ?>
+                    <a href="../home.php" class="card-link">
+                        <h5 class="card-title">Inactive News <?= $result[0] ?></h5>
+                    </a>
+                    <?php
+                } else {
+                    echo "No active news found."; 
+                }
+            } else {
+                
+                echo "Error: " . mysqli_error($con);
+            }
+        ?>
+          
+          <i class="fa fa-newspaper-o fa-3x text-light"></i>
         </div>
+      </div>
+    </div>
+  </div>
+  </div>
     </div>
 </body>
 </html>

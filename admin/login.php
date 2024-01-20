@@ -27,6 +27,7 @@
         
         if ($rows == 1) {
             $_SESSION['username'] = $username;
+            $_SESSION['password'] = $password;
             // Redirect to user dashboard page
             header("Location: dashboard.php");
         } else { print "Hristina";

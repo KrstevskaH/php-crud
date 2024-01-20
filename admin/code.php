@@ -102,12 +102,34 @@ if(isset($_POST['delete_newsCard']))
 if(isset($_POST['update_newsCard']))
 {
     $news_id = mysqli_real_escape_string($con, $_POST['news_id']);
-    $image = htmlspecialchars(basename($_FILES["image"]["name"]));
     $title = mysqli_real_escape_string($con, $_POST['title']);
     $description = mysqli_real_escape_string($con, $_POST['description']);
-    
+    $status = mysqli_real_escape_string($con, $_POST['status']);
 
-    $query = "UPDATE news SET image='images/$image', title='$title', description='$description' WHERE id='$news_id' ";
+    // Check if a new image is being uploaded
+    if(isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
+        $image = basename($_FILES["image"]["name"]);
+
+        // Specify the target directory for file upload
+        $target_dir = "images/";
+        $target_file = $target_dir . $image;
+
+        // Move the uploaded file to the target directory
+        if(move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+            // Update the database with the new image path
+            $query = "UPDATE news SET image='images/$image', title='$title', description='$description', status='$status' WHERE id='$news_id'";
+        } else {
+            // Handle file upload error
+            $_SESSION['message'] = "Error uploading file.";
+            header("Location: news.php");
+            exit(0);
+        }
+    } else {
+        // If no new image is uploaded, update other fields only
+        $query = "UPDATE news SET title='$title', description='$description', status='$status' WHERE id='$news_id'";
+    }
+
+    // Execute the query
     $query_run = mysqli_query($con, $query);
 
     if($query_run)
@@ -122,7 +144,38 @@ if(isset($_POST['update_newsCard']))
         header("Location: news.php");
         exit(0);
     }
+}
 
+
+
+
+
+
+
+
+
+if(isset($_POST['update_user']))
+{
+    $user_id = mysqli_real_escape_string($con, $_POST['user_id']);    
+    $username = mysqli_real_escape_string($con, $_POST['username']);
+    $password = mysqli_real_escape_string($con, $_POST['password']);
+    
+
+    $query = "UPDATE users SET  username='$username', password='$password' WHERE id='$user_id' ";
+    $query_run = mysqli_query($con, $query);
+
+    if($query_run)
+    {
+        $_SESSION['message'] = "User Updated Successfully";
+        header("Location: dashboard.php");
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "User Not Updated";
+        header("Location: dashboard.php");
+        exit(0);
+    }
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

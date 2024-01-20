@@ -45,13 +45,20 @@ require 'dbcon.php';
                            
                             <div class="mb-3">
                              <label for="image">Choose Image:</label>
-                             <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+                             <input type="file" class="form-control" id="image" name="image" accept="image/*" >
                         </div>
+                             <select id="status" name="status">
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
+                            </select>  
+                
+
                             <div class="mb-3 mt-3">
                                 <button type="submit" name="update_newsCard" class="btn btn-success">
                                     Update News
                                 </button>
                             </div>
+                            
 
                         </form>
                         <?php
