@@ -23,6 +23,7 @@
 		<div class="navbar-nav">
 			<a href="dashboard.php" class="nav-item nav-link active">Home</a>
 			<a href="students.php" class="nav-item nav-link">Students</a>
+			<a href="api.php" class="nav-item nav-link">API</a>
 			<a href="news.php" class="nav-item nav-link">News</a>
 			<div class="nav-item dropdown">
 				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Services</a>

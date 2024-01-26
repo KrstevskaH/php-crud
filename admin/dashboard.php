@@ -47,7 +47,9 @@ if (isset($_SESSION['id'])) {
       <div class="col-sm-6 col-md-4 col-lg-3">
         <div class="card">
           <div class="card-body bg-info">
-          <h5 class="card-title">Students
+          <a href="students.php" class="card-link"> 
+          <h5 class="card-title">Students</h5>
+          </a>
           <?php  
                 $con = mysqli_connect("localhost","root","","crud");
                 $query = "SELECT COUNT(id) FROM students";  
