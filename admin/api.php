@@ -25,6 +25,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['get_api'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js">
+
     <title>University Information</title>
     <style>
         table {
@@ -50,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['get_api'])) {
     <button type="submit" name="get_api" class="btn btn-success">
             Get API
         </button>
-        <table>
+        <table id="DataTable">
             <thead>
                 <tr>
                     <th>University</th>
@@ -98,3 +102,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['get_api'])) {
 
 </body>
 </html>
+
+<script>
+    let table = new DataTable('#DataTable');
+    alert("Hello,");
+</script>
